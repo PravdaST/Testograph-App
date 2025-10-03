@@ -319,7 +319,7 @@ export async function getWorkoutStats(userId: string): Promise<WorkoutStats | nu
     return null
   }
 
-  return data
+  return data as WorkoutStats | null
 }
 
 // =====================================================

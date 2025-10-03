@@ -2,13 +2,15 @@
  * TypeScript types for Exercise Guide
  */
 
+import type { Week } from '@/lib/utils/exercise-program-generator'
+
 export interface WorkoutProgram {
   id?: string
   user_id?: string
   program_name: string
   description?: string
   selected_exercises: string[] // Array of exercise IDs
-  exercises_data: Exercise[] // Full exercise details
+  exercises_data: Week[] | Exercise[] | any // Supports both new (Week[]) and old (Exercise[]) formats
   is_active?: boolean
   created_at?: string
   updated_at?: string
@@ -48,6 +50,7 @@ export interface Exercise {
   testosterone_why: string
   form: string[]
   mistakes: string[]
+  image: string
 }
 
 export interface WorkoutStats {
