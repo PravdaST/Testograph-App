@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import LabTestingClient from './LabTestingClient'
+import { ErrorBoundary } from './components/ErrorBoundary'
 
 export default async function LabTestingPage() {
   const supabase = await createClient()
@@ -14,5 +15,9 @@ export default async function LabTestingPage() {
     redirect('/login')
   }
 
-  return <LabTestingClient userId={user.id} />
+  return (
+    <ErrorBoundary>
+      <LabTestingClient userId={user.id} />
+    </ErrorBoundary>
+  )
 }
