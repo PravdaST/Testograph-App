@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import ExerciseGuideClient from './ExerciseGuideClient'
+import { ErrorBoundary } from './components/ErrorBoundary'
 
 export default async function ExerciseGuidePage() {
   const supabase = await createClient()
@@ -14,5 +15,9 @@ export default async function ExerciseGuidePage() {
     redirect('/login')
   }
 
-  return <ExerciseGuideClient />
+  return (
+    <ErrorBoundary>
+      <ExerciseGuideClient />
+    </ErrorBoundary>
+  )
 }
