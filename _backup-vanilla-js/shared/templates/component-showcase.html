@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Component Showcase - Design System</title>
+  <meta name="description" content="Visual showcase of all design system components">
+
+  <!-- Design System Styles -->
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <style>
+    .showcase-section {
+      margin-bottom: var(--space-2xl);
+      padding-bottom: var(--space-xl);
+      border-bottom: var(--border);
+    }
+
+    .showcase-section:last-child {
+      border-bottom: none;
+    }
+
+    .component-example {
+      background-color: var(--lighter);
+      padding: var(--space-md);
+      border-radius: var(--radius);
+      margin-bottom: var(--space-md);
+    }
+
+    .code-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      margin-bottom: var(--space-sm);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="#" class="navbar-brand">Design System Showcase</a>
+      <button class="navbar-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="navbar-menu">
+        <li><a href="#colors" class="navbar-link">Colors</a></li>
+        <li><a href="#typography" class="navbar-link">Typography</a></li>
+        <li><a href="#buttons" class="navbar-link">Buttons</a></li>
+        <li><a href="#forms" class="navbar-link">Forms</a></li>
+        <li><a href="#cards" class="navbar-link">Cards</a></li>
+        <li><a href="#alerts" class="navbar-link">Alerts</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container mt-lg mb-xl">
+    <div class="page-header">
+      <h1 class="page-title">Component Showcase</h1>
+      <p class="page-description">
+        Visual demonstration of all design system components
+      </p>
+    </div>
+
+    <!-- Colors -->
+    <section class="showcase-section" id="colors">
+      <h2>Colors</h2>
+      <p class="text-muted mb-md">Primary color palette for the design system</p>
+
+      <div class="grid grid-cols-1 grid-md-3 gap-md">
+        <div class="card">
+          <div class="card-body">
+            <div style="width: 100%; height: 100px; background-color: var(--primary); border-radius: var(--radius); margin-bottom: var(--space-sm);"></div>
+            <h4>Primary</h4>
+            <p class="text-muted text-sm">#2563eb</p>
+            <p class="text-sm">Main actions, links</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <div style="width: 100%; height: 100px; background-color: var(--secondary); border-radius: var(--radius); margin-bottom: var(--space-sm);"></div>
+            <h4>Secondary</h4>
+            <p class="text-muted text-sm">#16a34a</p>
+            <p class="text-sm">Success, health metrics</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <div style="width: 100%; height: 100px; background-color: var(--accent); border-radius: var(--radius); margin-bottom: var(--space-sm);"></div>
+            <h4>Accent</h4>
+            <p class="text-muted text-sm">#dc2626</p>
+            <p class="text-sm">Warnings, errors</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography -->
+    <section class="showcase-section" id="typography">
+      <h2>Typography</h2>
+      <p class="text-muted mb-md">Font scale and text styles</p>
+
+      <div class="component-example">
+        <h1>Heading 1 (h1) - Page Titles</h1>
+        <h2>Heading 2 (h2) - Section Headers</h2>
+        <h3>Heading 3 (h3) - Card Titles</h3>
+        <h4>Heading 4 (h4) - Subsections</h4>
+        <p>Body text (p) - Default paragraph text for content</p>
+        <p class="text-muted">Muted text - Secondary information</p>
+        <small>Small text - Helper text and labels</small>
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <section class="showcase-section" id="buttons">
+      <h2>Buttons</h2>
+      <p class="text-muted mb-md">All button variants and sizes</p>
+
+      <div class="component-example">
+        <div class="code-label">Button Variants</div>
+        <div class="flex flex-wrap gap-sm mb-md">
+          <button class="btn btn-primary">Primary</button>
+          <button class="btn btn-secondary">Secondary</button>
+          <button class="btn btn-accent">Accent</button>
+          <button class="btn btn-outline">Outline</button>
+          <button class="btn btn-ghost">Ghost</button>
+          <button class="btn btn-primary" disabled>Disabled</button>
+        </div>
+
+        <div class="code-label">Button Sizes</div>
+        <div class="flex flex-wrap items-center gap-sm mb-md">
+          <button class="btn btn-primary btn-sm">Small</button>
+          <button class="btn btn-primary">Default</button>
+          <button class="btn btn-primary btn-lg">Large</button>
+        </div>
+
+        <div class="code-label">Block Button</div>
+        <button class="btn btn-primary btn-block">Full Width Button</button>
+      </div>
+    </section>
+
+    <!-- Forms -->
+    <section class="showcase-section" id="forms">
+      <h2>Form Elements</h2>
+      <p class="text-muted mb-md">Inputs, selects, textareas, and validation states</p>
+
+      <div class="component-example">
+        <form>
+          <div class="grid grid-cols-1 grid-md-2 gap-md">
+            <div class="form-group">
+              <label class="form-label required">Text Input</label>
+              <input type="text" class="form-input" placeholder="Enter text...">
+              <span class="form-help">This is helper text</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Email Input</label>
+              <input type="email" class="form-input" placeholder="email@example.com">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Select Dropdown</label>
+              <select class="form-select">
+                <option>Choose option...</option>
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Number Input</label>
+              <input type="number" class="form-input" placeholder="0">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Textarea</label>
+            <textarea class="form-textarea" placeholder="Enter longer text..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Input with Error</label>
+            <input type="text" class="form-input error" value="Invalid value">
+            <span class="form-error">This field has an error</span>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="check1">
+            <label class="form-check-label" for="check1">Checkbox option</label>
+          </div>
+
+          <div class="flex gap-sm mt-md">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-outline">Reset</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Cards -->
+    <section class="showcase-section" id="cards">
+      <h2>Cards</h2>
+      <p class="text-muted mb-md">Different card layouts and styles</p>
+
+      <div class="grid grid-cols-1 grid-md-3 gap-md mb-md">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Basic Card</h3>
+            <p class="card-text">Simple card with title and text content.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Card with Header</h3>
+          </div>
+          <div class="card-body">
+            <p>Card content goes here...</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Card with Footer</h3>
+            <p class="card-text">Content area</p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary btn-sm">Action</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-label mb-sm">Stat Cards</div>
+      <div class="grid grid-cols-1 grid-md-4 gap-md">
+        <div class="stat-card">
+          <div class="stat-icon primary">📊</div>
+          <div class="stat-content">
+            <div class="stat-label">Total Users</div>
+            <div class="stat-value">1,234</div>
+            <div class="stat-trend up">+12% this month</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon secondary">💪</div>
+          <div class="stat-content">
+            <div class="stat-label">Workouts</div>
+            <div class="stat-value">24</div>
+            <div class="stat-trend up">+8% from last week</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon accent">🔥</div>
+          <div class="stat-content">
+            <div class="stat-label">Calories</div>
+            <div class="stat-value">2,450</div>
+            <div class="stat-trend down">-5% today</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon warning">⏱️</div>
+          <div class="stat-content">
+            <div class="stat-label">Active Time</div>
+            <div class="stat-value">45m</div>
+            <div class="stat-trend up">+15 min</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Alerts -->
+    <section class="showcase-section" id="alerts">
+      <h2>Alerts & Messages</h2>
+      <p class="text-muted mb-md">Alert messages for different states</p>
+
+      <div class="component-example">
+        <div class="alert alert-success mb-md">
+          <strong>Success!</strong> Your changes have been saved successfully.
+        </div>
+
+        <div class="alert alert-error mb-md">
+          <strong>Error!</strong> Something went wrong. Please try again.
+        </div>
+
+        <div class="alert alert-warning mb-md">
+          <strong>Warning!</strong> Please verify your data before proceeding.
+        </div>
+
+        <div class="alert alert-info">
+          <strong>Info:</strong> You have 3 new notifications.
+        </div>
+      </div>
+    </section>
+
+    <!-- Badges -->
+    <section class="showcase-section" id="badges">
+      <h2>Badges</h2>
+      <p class="text-muted mb-md">Status indicators and labels</p>
+
+      <div class="component-example">
+        <div class="flex flex-wrap gap-sm">
+          <span class="badge badge-primary">New</span>
+          <span class="badge badge-secondary">Active</span>
+          <span class="badge badge-accent">Important</span>
+          <span class="badge badge-warning">Pending</span>
+          <span class="badge badge-outline">Default</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tables -->
+    <section class="showcase-section" id="tables">
+      <h2>Tables</h2>
+      <p class="text-muted mb-md">Data tables with responsive wrapper</p>
+
+      <div class="component-example">
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Value</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Exercise 1</td>
+                <td>Strength</td>
+                <td>High</td>
+                <td><span class="badge badge-secondary">Active</span></td>
+              </tr>
+              <tr>
+                <td>Exercise 2</td>
+                <td>Cardio</td>
+                <td>Medium</td>
+                <td><span class="badge badge-primary">New</span></td>
+              </tr>
+              <tr>
+                <td>Exercise 3</td>
+                <td>Flexibility</td>
+                <td>Low</td>
+                <td><span class="badge badge-outline">Draft</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Loading States -->
+    <section class="showcase-section" id="loading">
+      <h2>Loading States</h2>
+      <p class="text-muted mb-md">Spinners and loading indicators</p>
+
+      <div class="component-example">
+        <div class="flex items-center gap-lg">
+          <div>
+            <div class="code-label mb-sm">Small</div>
+            <div class="spinner spinner-sm"></div>
+          </div>
+          <div>
+            <div class="code-label mb-sm">Default</div>
+            <div class="spinner"></div>
+          </div>
+          <div>
+            <div class="code-label mb-sm">Large</div>
+            <div class="spinner spinner-lg"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Layout -->
+    <section class="showcase-section" id="layout">
+      <h2>Layout Grid</h2>
+      <p class="text-muted mb-md">Responsive grid system</p>
+
+      <div class="component-example">
+        <div class="code-label mb-sm">4 Columns (responsive)</div>
+        <div class="grid grid-cols-1 grid-md-2 grid-lg-4 gap-md mb-lg">
+          <div class="card"><div class="card-body">Column 1</div></div>
+          <div class="card"><div class="card-body">Column 2</div></div>
+          <div class="card"><div class="card-body">Column 3</div></div>
+          <div class="card"><div class="card-body">Column 4</div></div>
+        </div>
+
+        <div class="code-label mb-sm">3 Columns (responsive)</div>
+        <div class="grid grid-cols-1 grid-md-3 gap-md">
+          <div class="card"><div class="card-body">Column 1</div></div>
+          <div class="card"><div class="card-body">Column 2</div></div>
+          <div class="card"><div class="card-body">Column 3</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Demo -->
+    <section class="showcase-section" id="interactive">
+      <h2>Interactive Demo</h2>
+      <p class="text-muted mb-md">Try the JavaScript components</p>
+
+      <div class="component-example">
+        <div class="flex flex-wrap gap-sm">
+          <button class="btn btn-primary" onclick="Alert.success('Success message!')">
+            Show Success Alert
+          </button>
+          <button class="btn btn-accent" onclick="Alert.error('Error message!')">
+            Show Error Alert
+          </button>
+          <button class="btn btn-outline" onclick="Modal.alert('This is a modal alert!', 'Information')">
+            Show Modal
+          </button>
+          <button class="btn btn-outline" onclick="Modal.confirm('Are you sure?', () => Alert.success('Confirmed!'))">
+            Show Confirm
+          </button>
+          <button class="btn btn-ghost" onclick="Loading.show('Loading...'); setTimeout(() => Loading.hide(), 2000)">
+            Show Loading (2s)
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-bottom">
+        <p>&copy; 2025 Health & Fitness Tools Design System</p>
+        <p>Complete design system for building consistent, accessible applications</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/ui.js"></script>
+</body>
+</html>

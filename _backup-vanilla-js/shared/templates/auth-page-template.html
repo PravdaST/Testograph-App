@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход - Health & Fitness Tools</title>
+  <meta name="description" content="Влезте във вашия акаунт за достъп до инструментите за здраве и фитнес">
+
+  <!-- Design System Styles -->
+  <link rel="stylesheet" href="../shared/css/styles.css">
+  <link rel="stylesheet" href="../shared/css/auth.css">
+</head>
+<body>
+  <!-- Skip to content for accessibility -->
+  <a href="#main-content" class="skip-to-content">Прескочи към съдържанието</a>
+
+  <!-- Auth Container -->
+  <div class="auth-container">
+    <div class="auth-card">
+      <!-- Header -->
+      <div class="auth-header">
+        <div class="auth-logo">HF</div>
+        <h1 class="auth-title">Добре дошли обратно</h1>
+        <p class="auth-subtitle">Влезте във вашия акаунт</p>
+      </div>
+
+      <!-- Alert Container -->
+      <div id="alert-container"></div>
+
+      <!-- Auth Form -->
+      <div class="auth-body" id="main-content">
+        <form id="login-form" class="auth-form" data-validate>
+          <!-- Email Field -->
+          <div class="form-group">
+            <label for="email" class="form-label required">Имейл</label>
+            <input
+              type="email"
+              id="email"
+              class="form-input"
+              placeholder="you@example.com"
+              required
+              autocomplete="email"
+            >
+            <span class="form-error" role="alert"></span>
+          </div>
+
+          <!-- Password Field -->
+          <div class="form-group">
+            <label for="password" class="form-label required">Парола</label>
+            <div class="password-group">
+              <input
+                type="password"
+                id="password"
+                class="form-input"
+                placeholder="Въведете вашата парола"
+                required
+                minlength="8"
+                autocomplete="current-password"
+              >
+              <button type="button" class="password-toggle" aria-label="Покажи парола">
+                👁
+              </button>
+            </div>
+            <span class="form-error" role="alert"></span>
+          </div>
+
+          <!-- Remember Me & Forgot Password -->
+          <div class="auth-options">
+            <div class="auth-remember">
+              <input type="checkbox" id="remember" name="remember">
+              <label for="remember">Запомни ме</label>
+            </div>
+            <a href="#" class="auth-forgot">Забравена парола?</a>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary btn-block" id="submit-btn">
+            Вход
+          </button>
+
+          <!-- Divider -->
+          <div class="auth-divider">
+            <span>или продължете с</span>
+          </div>
+
+          <!-- Social Auth -->
+          <div class="social-auth">
+            <button type="button" class="btn-social btn-google">
+              <svg width="20" height="20" viewBox="0 0 18 18">
+                <path fill="#4285F4" d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 0 0 2.38-5.88c0-.57-.05-.66-.15-1.18z"/>
+                <path fill="#34A853" d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 0 1-7.18-2.54H1.83v2.07A8 8 0 0 0 8.98 17z"/>
+                <path fill="#FBBC05" d="M4.5 10.52a4.8 4.8 0 0 1 0-3.04V5.41H1.83a8 8 0 0 0 0 7.18l2.67-2.07z"/>
+                <path fill="#EA4335" d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 0 0 1.83 5.4L4.5 7.49a4.77 4.77 0 0 1 4.48-3.3z"/>
+              </svg>
+              Google
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Footer -->
+      <div class="auth-footer">
+        <p>
+          Нямате акаунт? <a href="signup.html">Регистрирайте се</a>
+        </p>
+        <p>
+          Или <a href="../dashboard/index.html?guest=true">продължете като гост</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../shared/js/supabase-client.js"></script>
+  <script src="../shared/js/ui.js"></script>
+  <script src="../shared/js/auth.js"></script>
+  <script src="app.js"></script>
+
+  <script>
+    // Password visibility toggle
+    document.querySelector('.password-toggle').addEventListener('click', function() {
+      const passwordInput = document.getElementById('password');
+      const type = passwordInput.type === 'password' ? 'text' : 'password';
+      passwordInput.type = type;
+      this.textContent = type === 'password' ? '👁' : '👁‍🗨';
+    });
+
+    // Form submission
+    document.getElementById('login-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const submitBtn = document.getElementById('submit-btn');
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // Show loading state
+      Loading.button(submitBtn, true, 'Влизане...');
+
+      try {
+        // Your login logic here
+        // const result = await login(email, password);
+
+        // On success
+        Alert.success('Успешно влизане!');
+
+        // Redirect after short delay
+        setTimeout(() => {
+          window.location.href = '../dashboard/index.html';
+        }, 1000);
+
+      } catch (error) {
+        Alert.error('Грешка при влизане. Проверете имейл и парола.');
+        Loading.button(submitBtn, false);
+      }
+    });
+  </script>
+</body>
+</html>

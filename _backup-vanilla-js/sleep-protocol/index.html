@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Протокол за Сън - Оптимизирай своя сън</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" style="background: #6366f1; padding: 1rem 0; margin-bottom: 2rem;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="../dashboard/index.html" style="color: white; text-decoration: none; font-weight: 600;">← Назад към таблото</a>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <span id="user-email" style="color: white; font-size: 0.9rem;"></span>
+                <button id="logout-btn" style="background: rgba(255,255,255,0.2); color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.375rem; cursor: pointer; display: none;">Изход</button>
+                <a href="../auth/login.html" id="login-link" style="background: white; color: #6366f1; padding: 0.5rem 1rem; border-radius: 0.375rem; text-decoration: none; font-weight: 600;">Вход</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Протокол за Оптимизация на Съня</h1>
+            <p class="subtitle">Създай своя персонализирана вечерна рутина и следи напредъка си</p>
+        </header>
+
+        <div class="progress-indicator">
+            <div class="step" data-step="1">
+                <div class="step-number active">1</div>
+                <div class="step-label">Оценка</div>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step" data-step="2">
+                <div class="step-number">2</div>
+                <div class="step-label">Рутина</div>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step" data-step="3">
+                <div class="step-number">3</div>
+                <div class="step-label">Чеклист</div>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step" data-step="4">
+                <div class="step-number">4</div>
+                <div class="step-label">Проследяване</div>
+            </div>
+        </div>
+
+        <!-- Section 1: Sleep Assessment Form -->
+        <section id="section-assessment" class="section active">
+            <h2>Оценка на Съня</h2>
+            <p class="section-description">Нека разберем твоите настоящи модели на сън, за да създадем персонализирана рутина.</p>
+
+            <form id="assessment-form">
+                <div class="form-group">
+                    <label for="sleep-hours">Колко часа спиш на нощ?</label>
+                    <input type="number" id="sleep-hours" name="sleep-hours" min="1" max="12" step="0.5" value="7" required>
+                    <span class="input-suffix">часа</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="bedtime">По какво време обикновено лягаш?</label>
+                    <input type="time" id="bedtime" name="bedtime" value="22:30" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="fall-asleep-time">Колко време ти трябва да заспиш?</label>
+                    <select id="fall-asleep-time" name="fall-asleep-time" required>
+                        <option value="under-15">Под 15 минути</option>
+                        <option value="15-30" selected>15-30 минути</option>
+                        <option value="30-60">30-60 минути</option>
+                        <option value="over-60">Над 1 час</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="wake-ups">Колко често се събуждаш през нощта?</label>
+                    <select id="wake-ups" name="wake-ups" required>
+                        <option value="none">Не се събуждам</option>
+                        <option value="1-2" selected>1-2 пъти</option>
+                        <option value="3-plus">3 или повече пъти</option>
+                    </select>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary">Генерирай Моята Рутина</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Section 2: Personalized Evening Routine -->
+        <section id="section-routine" class="section">
+            <h2>Твоята Персонализирана Вечерна Рутина</h2>
+            <p class="section-description">Следвай този 2-часов протокол за оптимизация на качеството на съня.</p>
+
+            <div class="routine-summary">
+                <div class="summary-card">
+                    <div class="summary-icon">🌙</div>
+                    <div class="summary-content">
+                        <div class="summary-label">Целево време за сън</div>
+                        <div class="summary-value" id="target-bedtime">22:30</div>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon">⏰</div>
+                    <div class="summary-content">
+                        <div class="summary-label">Рутината започва</div>
+                        <div class="summary-value" id="routine-start">20:30</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="routine-timeline" class="timeline">
+                <!-- Timeline items will be generated by JavaScript -->
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn btn-secondary" onclick="app.goToSection(1)">Назад</button>
+                <button type="button" class="btn btn-primary" onclick="app.goToSection(3)">Към Чеклист</button>
+            </div>
+        </section>
+
+        <!-- Section 3: Bedroom Optimization Checklist -->
+        <section id="section-checklist" class="section">
+            <h2>Чеклист за Оптимизация на Спалнята</h2>
+            <p class="section-description">Завърши тези оптимизации за най-добра среда за сън.</p>
+
+            <div class="checklist-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="checklist-progress" style="width: 0%"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="checklist-completed">0</span> от <span id="checklist-total">10</span> завършени
+                </div>
+            </div>
+
+            <div id="checklist-items" class="checklist">
+                <!-- Checklist items will be generated by JavaScript -->
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn btn-secondary" onclick="app.goToSection(2)">Назад</button>
+                <button type="button" class="btn btn-primary" onclick="app.goToSection(4)">Към Проследяване</button>
+            </div>
+        </section>
+
+        <!-- Section 4: Sleep Tracker -->
+        <section id="section-tracker" class="section">
+            <h2>Проследяване на Съня</h2>
+            <p class="section-description">Записвай съня си ежедневно, за да следиш напредъка си.</p>
+
+            <div class="tracker-container">
+                <div class="tracker-form-container">
+                    <h3>Запиши Днешния Сън</h3>
+                    <form id="sleep-log-form">
+                        <div class="form-group">
+                            <label for="log-date">Дата</label>
+                            <input type="date" id="log-date" name="log-date" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="log-bedtime">Време на лягане</label>
+                                <input type="time" id="log-bedtime" name="log-bedtime" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="log-waketime">Време на събуждане</label>
+                                <input type="time" id="log-waketime" name="log-waketime" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="log-quality">Качество на съня (1-10)</label>
+                            <div class="quality-slider">
+                                <input type="range" id="log-quality" name="log-quality" min="1" max="10" value="7">
+                                <span class="quality-value" id="quality-display">7</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary full-width">Запиши Запис</button>
+                    </form>
+
+                    <div class="stats-container">
+                        <h3>Твоята Статистика</h3>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-label">Средно качество (7 дни)</div>
+                                <div class="stat-value" id="avg-quality-7">-</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Средни часове (7 дни)</div>
+                                <div class="stat-value" id="avg-hours-7">-</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Средно качество (30 дни)</div>
+                                <div class="stat-value" id="avg-quality-30">-</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Средни часове (30 дни)</div>
+                                <div class="stat-value" id="avg-hours-30">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tracker-chart-container">
+                    <h3>Тренд на Качеството на Съня</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="sleep-chart"></canvas>
+                    </div>
+
+                    <h3>Последни Записи</h3>
+                    <div id="sleep-logs-list" class="logs-list">
+                        <p class="empty-state">Все още няма записи. Започни да записваш, за да видиш историята си!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn btn-secondary" onclick="app.goToSection(3)">Назад към Чеклист</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="../shared/js/supabase-client.js"></script>
+    <script src="../shared/js/analytics.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

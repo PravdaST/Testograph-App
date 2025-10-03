@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Табло - Health & Fitness Tools</title>
+  <meta name="description" content="Вашето лично табло за управление на здраве и фитнес">
+
+  <!-- Design System Styles -->
+  <link rel="stylesheet" href="../shared/css/styles.css">
+  <link rel="stylesheet" href="../shared/css/dashboard.css">
+</head>
+<body>
+  <!-- Skip to content for accessibility -->
+  <a href="#main-content" class="skip-to-content">Прескочи към съдържанието</a>
+
+  <!-- Dashboard Wrapper -->
+  <div class="dashboard-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <!-- Sidebar Header -->
+      <div class="sidebar-header">
+        <a href="/dashboard" class="sidebar-brand">
+          <div class="sidebar-logo">HF</div>
+          <span class="sidebar-brand-text">Health & Fitness</span>
+        </a>
+      </div>
+
+      <!-- Sidebar Navigation -->
+      <nav class="sidebar-nav">
+        <!-- Main Section -->
+        <div class="sidebar-section">
+          <h4 class="sidebar-section-title">Главно</h4>
+          <ul class="sidebar-menu">
+            <li>
+              <a href="/dashboard" class="sidebar-link active">
+                <span class="sidebar-icon">🏠</span>
+                <span class="sidebar-text">Табло</span>
+              </a>
+            </li>
+            <li>
+              <a href="/profile" class="sidebar-link">
+                <span class="sidebar-icon">👤</span>
+                <span class="sidebar-text">Профил</span>
+              </a>
+            </li>
+            <li>
+              <a href="/settings" class="sidebar-link">
+                <span class="sidebar-icon">⚙️</span>
+                <span class="sidebar-text">Настройки</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tools Section -->
+        <div class="sidebar-section">
+          <h4 class="sidebar-section-title">Инструменти</h4>
+          <ul class="sidebar-menu">
+            <li>
+              <a href="../meal-planner/index.html" class="sidebar-link">
+                <span class="sidebar-icon">🍎</span>
+                <span class="sidebar-text">План за хранене</span>
+              </a>
+            </li>
+            <li>
+              <a href="../exercise-guide/index.html" class="sidebar-link">
+                <span class="sidebar-icon">💪</span>
+                <span class="sidebar-text">Упражнения</span>
+              </a>
+            </li>
+            <li>
+              <a href="../sleep-protocol/index.html" class="sidebar-link">
+                <span class="sidebar-icon">🛏️</span>
+                <span class="sidebar-text">Протокол за сън</span>
+              </a>
+            </li>
+            <li>
+              <a href="../supplement-timing/index.html" class="sidebar-link">
+                <span class="sidebar-icon">💊</span>
+                <span class="sidebar-text">Добавки</span>
+              </a>
+            </li>
+            <li>
+              <a href="../lab-testing/index.html" class="sidebar-link">
+                <span class="sidebar-icon">🧪</span>
+                <span class="sidebar-text">Лабораторни тестове</span>
+                <span class="sidebar-badge">3</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <a href="/profile" class="sidebar-user">
+          <div class="sidebar-user-avatar">ИП</div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name">Иван Петров</div>
+            <div class="sidebar-user-email">ivan@example.com</div>
+          </div>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="dashboard-main">
+      <!-- Dashboard Header -->
+      <header class="dashboard-header">
+        <div class="dashboard-header-content">
+          <div class="dashboard-header-left">
+            <h1 class="dashboard-header-title">Табло</h1>
+          </div>
+          <div class="dashboard-header-right">
+            <!-- Search -->
+            <div class="dashboard-search">
+              <span class="dashboard-search-icon">🔍</span>
+              <input
+                type="search"
+                class="dashboard-search-input"
+                placeholder="Търсене..."
+                aria-label="Търсене"
+              >
+            </div>
+
+            <!-- Notifications -->
+            <div class="dashboard-notifications">
+              <button class="notification-button" aria-label="Известия">
+                🔔
+                <span class="notification-badge">3</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <main class="dashboard-content" id="main-content">
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon primary">🍎</div>
+            <div class="stat-content">
+              <div class="stat-label">Планове за хранене</div>
+              <div class="stat-value">12</div>
+              <div class="stat-trend up">+2 този месец</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon secondary">💪</div>
+            <div class="stat-content">
+              <div class="stat-label">Тренировки</div>
+              <div class="stat-value">24</div>
+              <div class="stat-trend up">+12% от миналия месец</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon accent">🛏️</div>
+            <div class="stat-content">
+              <div class="stat-label">Среден сън</div>
+              <div class="stat-value">7.5ч</div>
+              <div class="stat-trend down">-0.5ч от миналата седмица</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon warning">🧪</div>
+            <div class="stat-content">
+              <div class="stat-label">Лабораторни тестове</div>
+              <div class="stat-value">5</div>
+              <div class="stat-trend up">+1 нов тест</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="widget">
+          <div class="widget-header">
+            <h2 class="widget-title">Бързи действия</h2>
+          </div>
+          <div class="widget-body">
+            <div class="quick-actions">
+              <a href="#" class="quick-action">
+                <span class="quick-action-icon">➕</span>
+                <span class="quick-action-text">Нов план</span>
+              </a>
+              <a href="#" class="quick-action">
+                <span class="quick-action-icon">📊</span>
+                <span class="quick-action-text">Статистика</span>
+              </a>
+              <a href="#" class="quick-action">
+                <span class="quick-action-icon">🎯</span>
+                <span class="quick-action-text">Цели</span>
+              </a>
+              <a href="#" class="quick-action">
+                <span class="quick-action-icon">📝</span>
+                <span class="quick-action-text">Дневник</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="widget">
+          <div class="widget-header">
+            <h2 class="widget-title">Последна активност</h2>
+            <div class="widget-actions">
+              <button class="widget-action" aria-label="Опресни">🔄</button>
+              <button class="widget-action" aria-label="Настройки">⚙️</button>
+            </div>
+          </div>
+          <div class="widget-body">
+            <div class="table-wrapper">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Дата</th>
+                    <th>Активност</th>
+                    <th>Инструмент</th>
+                    <th>Статус</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>02.10.2025</td>
+                    <td>Създаден нов план за хранене</td>
+                    <td>План за хранене</td>
+                    <td><span class="badge badge-secondary">Завършено</span></td>
+                  </tr>
+                  <tr>
+                    <td>01.10.2025</td>
+                    <td>Запазен дневник за сън</td>
+                    <td>Протокол за сън</td>
+                    <td><span class="badge badge-secondary">Завършено</span></td>
+                  </tr>
+                  <tr>
+                    <td>30.09.2025</td>
+                    <td>Добавени лабораторни резултати</td>
+                    <td>Лабораторни тестове</td>
+                    <td><span class="badge badge-primary">Нов</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Sidebar Toggle (Mobile) -->
+  <button class="sidebar-toggle" aria-label="Отвори меню">
+    ☰
+  </button>
+
+  <!-- Sidebar Overlay (Mobile) -->
+  <div class="sidebar-overlay"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../shared/js/supabase-client.js"></script>
+  <script src="../shared/js/ui.js"></script>
+  <script src="../shared/js/auth.js"></script>
+  <script src="app.js"></script>
+
+  <script>
+    // Example: Load user data
+    async function loadDashboard() {
+      Loading.show('Зареждане на данни...');
+
+      try {
+        // Fetch user stats
+        // const stats = await fetchUserStats();
+
+        // Update UI
+        // updateStats(stats);
+
+        setTimeout(() => {
+          Loading.hide();
+        }, 1000);
+      } catch (error) {
+        Loading.hide();
+        Alert.error('Грешка при зареждане на данни');
+      }
+    }
+
+    // Example: Quick action
+    document.querySelectorAll('.quick-action').forEach(action => {
+      action.addEventListener('click', (e) => {
+        e.preventDefault();
+        const actionText = action.querySelector('.quick-action-text').textContent;
+        Alert.info(`Отваряне: ${actionText}`);
+      });
+    });
+
+    // Load dashboard on page load
+    document.addEventListener('DOMContentLoaded', loadDashboard);
+  </script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testograph Tools - Оптимизирай своя тестостерон естествено</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .app-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .app-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #2d3436;
+        }
+
+        .app-description {
+            font-size: 1rem;
+            color: #636e72;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .app-features {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .app-features li {
+            padding: 5px 0;
+            color: #636e72;
+            font-size: 0.9rem;
+        }
+
+        .app-features li:before {
+            content: "✓ ";
+            color: #00b894;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .app-status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        .status-ready {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-coming-soon {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💪 Testograph Tools</h1>
+            <p class="subtitle">Научно обосновани инструменти за оптимизиране на тестостерона естествено</p>
+            <div class="auth-buttons">
+                <a href="auth/signup.html" class="btn btn-primary">Започни безплатно</a>
+                <a href="auth/login.html" class="btn btn-secondary">Вход</a>
+                <a href="dashboard/index.html?guest=true" class="btn btn-secondary">Опитай като гост</a>
+            </div>
+        </header>
+
+        <div class="apps-grid">
+            <a href="supplement-timing/index.html" class="app-card">
+                <div class="app-icon">⏰</div>
+                <h2 class="app-title">График за прием на добавки</h2>
+                <p class="app-description">
+                    Персонализиран график за оптимален прием на добавки за тестостерон
+                </p>
+                <ul class="app-features">
+                    <li>24-часова визуална линия</li>
+                    <li>Научно обосновани добавки</li>
+                    <li>Предупреждения за взаимодействия</li>
+                    <li>Принтиране на графика</li>
+                </ul>
+                <span class="app-status status-ready">✓ Готово за употреба</span>
+            </a>
+
+            <a href="exercise-guide/index.html" class="app-card">
+                <div class="app-icon">🏋️</div>
+                <h2 class="app-title">Ръководство за упражнения</h2>
+                <p class="app-description">
+                    20 упражнения с техника за максимална стимулация на тестостерона
+                </p>
+                <ul class="app-features">
+                    <li>20 сложни упражнения</li>
+                    <li>Оптимални протоколи за сетове/повторения/почивка</li>
+                    <li>T-буст рейтинг за всяко упражнение</li>
+                    <li>Персонализиран план</li>
+                </ul>
+                <span class="app-status status-ready">✓ Готово за употреба</span>
+            </a>
+
+            <a href="sleep-protocol/index.html" class="app-card">
+                <div class="app-icon">😴</div>
+                <h2 class="app-title">Протокол за сън</h2>
+                <p class="app-description">
+                    Оптимизация на съня за максимално нощно възстановяване
+                </p>
+                <ul class="app-features">
+                    <li>Персонализирана вечерна рутина</li>
+                    <li>Чеклист за оптимизация на спалнята</li>
+                    <li>Проследяване на съня с графики</li>
+                    <li>Персонализиран протокол</li>
+                </ul>
+                <span class="app-status status-ready">✓ Готово за употреба</span>
+            </a>
+
+            <a href="meal-planner/index.html" class="app-card">
+                <div class="app-icon">🍽️</div>
+                <h2 class="app-title">План за хранене</h2>
+                <p class="app-description">
+                    Персонализиран 30-дневен план за хранене с оптимизирани макроси за тестостерон
+                </p>
+                <ul class="app-features">
+                    <li>Персонализирани калории и макроси</li>
+                    <li>35% мазнини за оптимизация на тестостерона</li>
+                    <li>Балансирани предложения за храна</li>
+                    <li>Седмични списъци за пазаруване</li>
+                </ul>
+                <span class="app-status status-ready">✓ Готово за употреба</span>
+            </a>
+
+            <a href="lab-testing/index.html" class="app-card">
+                <div class="app-icon">🧪</div>
+                <h2 class="app-title">Лабораторни изследвания</h2>
+                <p class="app-description">
+                    Проследявай и интерпретирай нивата на тестостерона във времето
+                </p>
+                <ul class="app-features">
+                    <li>Справочник на български лаборатории</li>
+                    <li>Интерпретатор на резултати</li>
+                    <li>Визуални графики на прогреса</li>
+                    <li>Исторически записи</li>
+                </ul>
+                <span class="app-status status-ready">✓ Готово за употреба</span>
+            </a>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Testograph Tools - Изграден с наука и отдаденост</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Само за образователни цели. Не е медицински съвет. Консултирайте се с медицински специалист.</p>
+        </footer>
+    </div>
+
+    <script src="shared/js/analytics.js"></script>
+    <script>
+        // Track landing page view
+        Analytics.track('landing_page_view');
+    </script>
+</body>
+</html>

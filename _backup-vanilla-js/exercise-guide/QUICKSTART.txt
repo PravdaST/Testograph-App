@@ -1,0 +1,96 @@
+EXERCISE GUIDE - QUICK START
+=============================
+
+OPEN THE APP:
+-------------
+Simply open: exercise-guide/index.html
+
+OR run a local server:
+  cd exercise-guide
+  python3 -m http.server 8080
+  Open: http://localhost:8080
+
+MAIN FEATURES:
+--------------
+1. BROWSE EXERCISES
+   - View all 20 testosterone-optimizing exercises
+   - See detailed form cues and common mistakes
+   - Each exercise includes Bulgarian + English names
+
+2. FILTER EXERCISES
+   - By T-Boost Level: High (⚡⚡⚡), Medium (⚡⚡), Low (⚡)
+   - By Muscle Group: Legs, Back, Chest, Shoulders, Core
+   - Click any filter button to activate
+   - Click "Reset Filters" to show all
+
+3. SELECT EXERCISES
+   - Click exercise cards to select (max 10)
+   - See selection counter update
+   - Selections saved automatically to localStorage
+
+4. GENERATE POSTER
+   - Select 1-10 exercises
+   - Click "Generate Poster (PDF)"
+   - Downloads printable A4 poster
+   - Perfect for gym reference!
+
+KEYBOARD SHORTCUTS:
+-------------------
+- Click card = Select/Deselect
+- Click details = Expand form cues/mistakes
+- Checkbox = Quick select/deselect
+
+FILE SIZES:
+-----------
+index.html: 143 lines
+styles.css: 551 lines (fully responsive)
+app.js: 409 lines (complete functionality)
+exercises-data.js: 488 lines (20 exercises)
+
+Total: ~40KB (excluding jsPDF CDN)
+
+TROUBLESHOOTING:
+----------------
+Q: Filters not working?
+A: Check browser console for JavaScript errors
+
+Q: PDF not generating?
+A: Ensure jsPDF CDN is accessible (internet required)
+
+Q: Selection not saving?
+A: LocalStorage must be enabled in browser
+
+Q: Cards not showing?
+A: Verify exercises-data.js is loaded correctly
+
+BEST PRACTICES:
+---------------
+✓ Select exercises covering all muscle groups
+✓ Prioritize HIGH T-boost exercises (⚡⚡⚡)
+✓ Include both upper and lower body
+✓ Read form cues before attempting exercises
+✓ Print poster before gym sessions
+
+RECOMMENDED WORKOUT SELECTION:
+------------------------------
+For optimal testosterone boost, select:
+1. Deadlift (High T)
+2. Squats (High T)
+3. Bench Press (High T)
+4. Pull-ups (High T)
+5. Overhead Press (High T)
+6. Barbell Row (High T)
+7. Romanian Deadlift (High T)
+8. Dips (High T)
+9. Farmer's Walk (High T)
+10. Hip Thrust (High T)
+
+SUPPORT:
+--------
+All exercises include:
+✓ 5 detailed form cues
+✓ 3-4 common mistakes
+✓ Scientific T-boost explanation
+✓ Optimal set/rep protocols
+
+ENJOY YOUR TRAINING!

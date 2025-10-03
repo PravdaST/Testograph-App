@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TESTOGRAPH - Лабораторни Изследвания</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Chart.js for visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="header">
+    <div class="container">
+      <h1>🔬 TESTOGRAPH Лаборатории</h1>
+      <p>Пълен гид за лабораторни изследвания, интерпретация на резултати и проследяване на прогрес</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Tab Navigation -->
+    <div class="tabs">
+      <button class="tab-button active" data-tab="directory">📍 Справочник Лаборатории</button>
+      <button class="tab-button" data-tab="instructions">📋 Инструкции</button>
+      <button class="tab-button" data-tab="interpreter">📊 Интерпретатор</button>
+      <button class="tab-button" data-tab="tracker">📈 Проследяване</button>
+    </div>
+
+    <!-- Tab 1: Lab Directory -->
+    <div id="directory-tab" class="tab-content active">
+      <div class="card">
+        <h2>Справочник на Лаборатории</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+          Намерете най-близката лаборатория за хормонални изследвания
+        </p>
+
+        <div class="filter-section">
+          <select id="city-filter">
+            <option value="">Всички градове</option>
+            <option value="София">София</option>
+            <option value="Пловдив">Пловдив</option>
+            <option value="Варна">Варна</option>
+            <option value="Бургас">Бургас</option>
+            <option value="Русе">Русе</option>
+            <option value="Стара Загора">Стара Загора</option>
+            <option value="Плевен">Плевен</option>
+          </select>
+          <input type="text" id="search-filter" placeholder="Търси по име или адрес...">
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="lab-table">
+            <thead>
+              <tr>
+                <th>Град</th>
+                <th>Лаборатория</th>
+                <th>Адрес</th>
+                <th>Телефон</th>
+                <th>Цена Пакет</th>
+                <th>Работно време</th>
+                <th>Сайт</th>
+              </tr>
+            </thead>
+            <tbody id="labs-table-body">
+              <!-- Populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2: Test Instructions -->
+    <div id="instructions-tab" class="tab-content">
+      <div class="card">
+        <h2>Инструкции за Изследване</h2>
+
+        <div class="instruction-section">
+          <h3>Какво да поръчам в лабораторията?</h3>
+          <div class="test-list">
+            <p><strong>Пълен хормонален панел за тестостерон:</strong></p>
+            <ul>
+              <li><strong>Общ тестостерон (Total Testosterone)</strong> - основен маркер</li>
+              <li><strong>Свободен тестостерон (Free Testosterone)</strong> - биологично активната форма</li>
+              <li><strong>SHBG (Sex Hormone Binding Globulin)</strong> - протеин, свързващ хормоните</li>
+              <li><strong>Естрадиол (Estradiol/E2)</strong> - естрогенен хормон</li>
+              <li><strong>LH (Luteinizing Hormone)</strong> - стимулира производството на тестостерон</li>
+            </ul>
+            <p style="margin-top: 1rem;">
+              <strong>Цена на пакета:</strong> 75-92 лв в зависимост от лабораторията
+            </p>
+          </div>
+        </div>
+
+        <div class="instruction-section">
+          <h3>Подготовка за изследването</h3>
+          <ul class="instruction-list">
+            <li>
+              <strong>Време на деня:</strong>
+              Изследването трябва да се направи сутрин между 7:00 и 9:00 часа, когато нивата на тестостерон са най-високи.
+            </li>
+            <li>
+              <strong>Гладно:</strong>
+              Не приемайте храна или напитки (освен вода) поне 8 часа преди изследването.
+            </li>
+            <li>
+              <strong>Сън:</strong>
+              Осигурете си 7-8 часа качествен сън предната нощ. Недоспиването може да понижи нивата на тестостерон.
+            </li>
+            <li>
+              <strong>Физическа активност:</strong>
+              Избягвайте интензивни тренировки 24 часа преди изследването. Тренировките могат временно да повлияят хормоналните нива.
+            </li>
+            <li>
+              <strong>Алкохол:</strong>
+              Избягвайте алкохол поне 48 часа преди изследването.
+            </li>
+            <li>
+              <strong>Стресово състояние:</strong>
+              Опитайте се да сте спокойни и релаксирани. Стресът може да повлияе на резултатите.
+            </li>
+          </ul>
+        </div>
+
+        <div class="instruction-section">
+          <h3>Стъпки в деня на изследването</h3>
+          <ul class="instruction-list">
+            <li>
+              <strong>Стъпка 1:</strong>
+              Посетете лабораторията между 7:00 и 9:00 часа сутринта (гладни).
+            </li>
+            <li>
+              <strong>Стъпка 2:</strong>
+              Уточнете, че искате "пълен хормонален панел за тестостерон" или избройте изследванията поотделно.
+            </li>
+            <li>
+              <strong>Стъпка 3:</strong>
+              Вземете кръв (процедурата отнема около 5 минути).
+            </li>
+            <li>
+              <strong>Стъпка 4:</strong>
+              Резултатите обикновено са готови след 1-3 работни дни.
+            </li>
+            <li>
+              <strong>Стъпка 5:</strong>
+              Използвайте нашия интерпретатор за анализ на резултатите.
+            </li>
+          </ul>
+        </div>
+
+        <div class="alert alert-info">
+          <strong>💡 Важно:</strong> За най-точни резултати, направете изследването в същата лаборатория и по същото време на деня при следващи измервания.
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 3: Result Interpreter -->
+    <div id="interpreter-tab" class="tab-content">
+      <div class="card">
+        <h2>Интерпретатор на Резултати</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+          Въведете вашите резултати за автоматична интерпретация и препоръки
+        </p>
+
+        <form id="interpret-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="age-input">Възраст <span style="color: red;">*</span></label>
+              <input type="number" id="age-input" min="18" max="100" required>
+              <small>За определяне на референтния диапазон</small>
+            </div>
+
+            <div class="form-group">
+              <label for="total-t-input">Общ тестостерон (ng/dL) <span style="color: red;">*</span></label>
+              <input type="number" id="total-t-input" step="0.1" min="0" required>
+              <small>Основен маркер за тестостерона</small>
+            </div>
+
+            <div class="form-group">
+              <label for="free-t-input">Свободен тестостерон (pg/mL)</label>
+              <input type="number" id="free-t-input" step="0.1" min="0">
+              <small>Биологично активна форма (опционално)</small>
+            </div>
+
+            <div class="form-group">
+              <label for="shbg-input">SHBG (nmol/L)</label>
+              <input type="number" id="shbg-input" step="0.1" min="0">
+              <small>Свързващ протеин (опционално)</small>
+            </div>
+
+            <div class="form-group">
+              <label for="estradiol-input">Естрадиол (pg/mL)</label>
+              <input type="number" id="estradiol-input" step="0.1" min="0">
+              <small>Естрогенен хормон (опционално)</small>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">🔍 Анализирай Резултати</button>
+        </form>
+
+        <div id="interpretation-result"></div>
+      </div>
+
+      <div class="card">
+        <h3>Референтни стойности</h3>
+        <div style="overflow-x: auto;">
+          <table class="lab-table">
+            <thead>
+              <tr>
+                <th>Възраст</th>
+                <th>Оптимален диапазон</th>
+                <th>Клинично нисък</th>
+                <th>Статус</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>20-30 години</td>
+                <td>600-900 ng/dL</td>
+                <td>< 300 ng/dL</td>
+                <td>Пик продукция</td>
+              </tr>
+              <tr>
+                <td>30-40 години</td>
+                <td>500-800 ng/dL</td>
+                <td>< 270 ng/dL</td>
+                <td>Нормално намаление</td>
+              </tr>
+              <tr>
+                <td>40-50 години</td>
+                <td>450-700 ng/dL</td>
+                <td>< 250 ng/dL</td>
+                <td>Умерено намаление</td>
+              </tr>
+              <tr>
+                <td>50+ години</td>
+                <td>400-600 ng/dL</td>
+                <td>< 230 ng/dL</td>
+                <td>Възрастово намаление</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 4: Progress Tracker -->
+    <div id="tracker-tab" class="tab-content">
+      <div class="card">
+        <h2>Проследяване на Прогрес</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+          Записвайте и проследявайте вашите лабораторни резултати във времето
+        </p>
+
+        <div class="tracker-controls">
+          <button id="add-result-btn" class="btn btn-primary">➕ Добави резултат</button>
+          <button id="export-csv-btn" class="btn btn-secondary">📥 Експорт CSV</button>
+        </div>
+
+        <!-- Add/Edit Result Form -->
+        <div id="result-form-section" style="display: none;">
+          <div class="card" style="background: var(--background);">
+            <h3>Добави/Редактирай резултат</h3>
+            <form id="result-form">
+              <input type="hidden" id="result-id">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="result-date">Дата на изследване <span style="color: red;">*</span></label>
+                  <input type="date" id="result-date" required>
+                </div>
+                <div class="form-group">
+                  <label for="result-total-t">Общ тестостерон (ng/dL) <span style="color: red;">*</span></label>
+                  <input type="number" id="result-total-t" step="0.1" min="0" required>
+                </div>
+                <div class="form-group">
+                  <label for="result-free-t">Свободен тестостерон (pg/mL)</label>
+                  <input type="number" id="result-free-t" step="0.1" min="0">
+                </div>
+                <div class="form-group">
+                  <label for="result-shbg">SHBG (nmol/L)</label>
+                  <input type="number" id="result-shbg" step="0.1" min="0">
+                </div>
+                <div class="form-group">
+                  <label for="result-estradiol">Естрадиол (pg/mL)</label>
+                  <input type="number" id="result-estradiol" step="0.1" min="0">
+                </div>
+                <div class="form-group">
+                  <label for="result-lh">LH (mIU/mL)</label>
+                  <input type="number" id="result-lh" step="0.1" min="0">
+                </div>
+              </div>
+              <div class="form-group" style="margin-top: 1rem;">
+                <label for="result-notes">Бележки</label>
+                <textarea id="result-notes" rows="3" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 0.375rem;"></textarea>
+              </div>
+              <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                <button type="button" id="save-result-btn" class="btn btn-success">💾 Запази</button>
+                <button type="button" id="cancel-result-btn" class="btn btn-secondary">❌ Отказ</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Results Table -->
+        <div style="overflow-x: auto;">
+          <table class="results-table" id="results-table">
+            <thead>
+              <tr>
+                <th>Дата</th>
+                <th>Общ T<br><small>(ng/dL)</small></th>
+                <th>Свободен T<br><small>(pg/mL)</small></th>
+                <th>SHBG<br><small>(nmol/L)</small></th>
+                <th>Естрадиол<br><small>(pg/mL)</small></th>
+                <th>Бележки</th>
+                <th>Действия</th>
+              </tr>
+            </thead>
+            <tbody id="results-table-body">
+              <!-- Populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Stats -->
+        <div id="tracker-stats" style="display: none;">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <!-- Chart -->
+        <div class="card">
+          <h3>Графика на прогрес</h3>
+          <div class="chart-container">
+            <canvas id="progress-chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load dependencies and app -->
+  <script src="labs-data.js"></script>
+  <script src="../shared/js/supabase-client.js"></script>
+  <script src="../shared/js/analytics.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

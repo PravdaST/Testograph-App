@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Табло - Testograph Tools</title>
+  <link rel="stylesheet" href="../shared/css/global.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-content">
+        <div class="navbar-brand">
+          <h2>Testograph Tools</h2>
+        </div>
+        <div class="navbar-menu">
+          <span id="user-email" class="user-email"></span>
+          <button id="logout-btn" class="btn btn-ghost btn-sm">Изход</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <!-- Welcome Section -->
+      <section class="welcome-section">
+        <h1>Добре дошли в таблото за оптимизация на тестостерона</h1>
+        <p class="text-secondary">
+          Достъп до всички 5 научно обосновани инструмента за максимизиране на нивата на тестостерон естествено
+        </p>
+      </section>
+
+      <!-- Tools Grid -->
+      <section class="tools-grid">
+        <!-- Meal Planner Tool -->
+        <div class="tool-card">
+          <div class="tool-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>
+            </svg>
+          </div>
+          <h3>План за хранене</h3>
+          <p>Получи персонализирани планове за хранене, оптимизирани за производство на тестостерон въз основа на целите ти</p>
+          <div class="tool-stats">
+            <span id="meal-plans-count">0 запазени планове</span>
+          </div>
+          <a href="../meal-planner/index.html" class="btn btn-primary">Отвори инструмента</a>
+        </div>
+
+        <!-- Sleep Protocol Tool -->
+        <div class="tool-card">
+          <div class="tool-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+            </svg>
+          </div>
+          <h3>Протокол за сън</h3>
+          <p>Създай персонализирана рутина за сън, която максимизира нощното възстановяване на тестостерона</p>
+          <div class="tool-stats">
+            <span id="sleep-logs-count">0 записа за сън</span>
+          </div>
+          <a href="../sleep-protocol/index.html" class="btn btn-primary">Отвори инструмента</a>
+        </div>
+
+        <!-- Supplement Timing Tool -->
+        <div class="tool-card">
+          <div class="tool-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="18" height="12" x="3" y="8" rx="1"/>
+              <path d="M7 8V4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4M3 14h18"/>
+            </svg>
+          </div>
+          <h3>График за добавки</h3>
+          <p>Получи прецизни препоръки за времето на прием на добавки за повишаване на тестостерона</p>
+          <div class="tool-stats">
+            <span>Научно обосновани протоколи</span>
+          </div>
+          <a href="../supplement-timing/index.html" class="btn btn-primary">Отвори инструмента</a>
+        </div>
+
+        <!-- Exercise Guide Tool -->
+        <div class="tool-card">
+          <div class="tool-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m6.5 6.5 11 11M21 21l-1-1m-4-4L4 4m-2 2 1 1m4 4L19 19"/>
+              <circle cx="16" cy="8" r="2"/>
+              <circle cx="8" cy="16" r="2"/>
+            </svg>
+          </div>
+          <h3>Ръководство за упражнения</h3>
+          <p>Открий най-добрите упражнения и протоколи за повишаване на тестостерона</p>
+          <div class="tool-stats">
+            <span>Научно обосновани тренировки</span>
+          </div>
+          <a href="../exercise-guide/index.html" class="btn btn-primary">Отвори инструмента</a>
+        </div>
+
+        <!-- Lab Testing Tool -->
+        <div class="tool-card">
+          <div class="tool-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10 2v7.31M14 9.3V1.99M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"/>
+              <path d="M5.52 16h12.96"/>
+            </svg>
+          </div>
+          <h3>Лабораторни изследвания</h3>
+          <p>Проследявай нивата на тестостерона и интерпретирай лабораторните резултати във времето</p>
+          <div class="tool-stats">
+            <span id="lab-results-count">0 тестови резултата</span>
+          </div>
+          <a href="../lab-testing/index.html" class="btn btn-primary">Отвори инструмента</a>
+        </div>
+      </section>
+
+      <!-- Quick Stats Section -->
+      <section class="stats-section">
+        <h2>Твоят прогрес</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="total-plans">0</div>
+            <div class="stat-label">Създадени планове за хранене</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="total-sleep-logs">0</div>
+            <div class="stat-label">Записи за сън</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="total-lab-results">0</div>
+            <div class="stat-label">Лабораторни резултати</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="days-active">0</div>
+            <div class="stat-label">Активни дни</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Guest Mode Notice -->
+      <div id="guest-notice" class="alert alert-info" style="display: none;">
+        Използваш гостов режим. Данните се съхраняват локално само на това устройство.
+        <a href="../auth/signup.html">Създай профил</a> за синхронизация между устройства.
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Testograph Tools. Всички права запазени.</p>
+      <p class="text-secondary">
+        Тези инструменти предоставят само образователна информация и не са медицински съвет.
+        Консултирайте се с медицински специалист преди да вземете каквито и да е здравни решения.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Load dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../shared/js/storage.js"></script>
+  <script src="../shared/js/analytics.js"></script>
+  <script src="../shared/js/supabase-client.js"></script>
+  <script src="../shared/js/auth.js"></script>
+  <script src="../shared/js/db-helpers.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

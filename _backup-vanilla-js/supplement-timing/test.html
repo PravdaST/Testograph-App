@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplement Timing - Test Suite</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #1a1a2e;
+            color: #0f0;
+        }
+        .test-section {
+            background: #16213e;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #0f0;
+        }
+        .test-pass {
+            color: #0f0;
+        }
+        .test-fail {
+            color: #f00;
+        }
+        .test-info {
+            color: #ff0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Supplement Timing Test Suite</h1>
+    <div id="test-results"></div>
+
+    <script src="supplements-data.js"></script>
+    <script>
+        const results = document.getElementById('test-results');
+
+        function log(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `test-section test-${type}`;
+            div.textContent = message;
+            results.appendChild(div);
+        }
+
+        function assert(condition, message) {
+            if (condition) {
+                log(`✓ PASS: ${message}`, 'pass');
+                return true;
+            } else {
+                log(`✗ FAIL: ${message}`, 'fail');
+                return false;
+            }
+        }
+
+        // Test Suite
+        log('Starting test suite...', 'info');
+
+        // Test 1: Data loaded
+        assert(typeof SUPPLEMENTS_DATA !== 'undefined', 'SUPPLEMENTS_DATA is defined');
+        assert(Array.isArray(SUPPLEMENTS_DATA), 'SUPPLEMENTS_DATA is an array');
+        assert(SUPPLEMENTS_DATA.length > 0, 'SUPPLEMENTS_DATA has items');
+
+        // Test 2: Required supplements exist
+        const requiredSupplements = ['TestoUP', 'Vitamin D3', 'Zinc', 'Magnesium', 'Omega-3', 'Creatine'];
+        requiredSupplements.forEach(name => {
+            const found = SUPPLEMENTS_DATA.find(s => s.name === name);
+            assert(found !== undefined, `Supplement "${name}" exists`);
+        });
+
+        // Test 3: Supplement data structure
+        SUPPLEMENTS_DATA.forEach((supp, index) => {
+            assert(supp.id !== undefined, `Supplement ${index} has id`);
+            assert(supp.name !== undefined, `Supplement ${index} has name`);
+            assert(supp.dosage !== undefined, `Supplement ${index} has dosage`);
+            assert(['morning', 'evening', 'pre-workout', 'post-workout'].includes(supp.timing),
+                   `Supplement ${supp.name} has valid timing: ${supp.timing}`);
+            assert(supp.category !== undefined, `Supplement ${supp.name} has category`);
+            assert(supp.why !== undefined, `Supplement ${supp.name} has explanation`);
+            assert(supp.color !== undefined, `Supplement ${supp.name} has color`);
+        });
+
+        // Test 4: Timing distribution
+        const timingCounts = {
+            morning: 0,
+            evening: 0,
+            'pre-workout': 0,
+            'post-workout': 0
+        };
+        SUPPLEMENTS_DATA.forEach(s => timingCounts[s.timing]++);
+
+        log(`Timing distribution: ${JSON.stringify(timingCounts)}`, 'info');
+        assert(timingCounts.morning > 0, 'Has morning supplements');
+        assert(timingCounts.evening > 0, 'Has evening supplements');
+
+        // Test 5: Categories
+        const categories = [...new Set(SUPPLEMENTS_DATA.map(s => s.category))];
+        log(`Categories: ${categories.join(', ')}`, 'info');
+        assert(categories.includes('testosterone'), 'Has testosterone category');
+        assert(categories.includes('sleep'), 'Has sleep category');
+        assert(categories.includes('workout'), 'Has workout category');
+
+        // Test 6: Interactions
+        assert(typeof INTERACTIONS !== 'undefined', 'INTERACTIONS is defined');
+        assert(Array.isArray(INTERACTIONS), 'INTERACTIONS is an array');
+        assert(INTERACTIONS.length > 0, 'INTERACTIONS has items');
+
+        INTERACTIONS.forEach((interaction, index) => {
+            assert(Array.isArray(interaction.supplements), `Interaction ${index} has supplements array`);
+            assert(interaction.supplements.length >= 2, `Interaction ${index} has at least 2 supplements`);
+            assert(interaction.warning !== undefined, `Interaction ${index} has warning`);
+            assert(['high', 'medium', 'low'].includes(interaction.severity),
+                   `Interaction ${index} has valid severity: ${interaction.severity}`);
+        });
+
+        // Test 7: Critical interactions
+        const criticalInteractions = ['Calcium', 'Zinc', 'Coffee', 'Magnesium'];
+        log(`Critical interactions to check: ${criticalInteractions.join(', ')}`, 'info');
+
+        const hasCalciumZinc = INTERACTIONS.some(i =>
+            i.supplements.includes('Calcium') && i.supplements.includes('Zinc')
+        );
+        assert(hasCalciumZinc, 'Has Calcium + Zinc interaction warning');
+
+        // Test 8: Count totals
+        log(`Total supplements: ${SUPPLEMENTS_DATA.length}`, 'info');
+        log(`Total interactions: ${INTERACTIONS.length}`, 'info');
+        assert(SUPPLEMENTS_DATA.length >= 10, 'Has at least 10 supplements');
+
+        // Test 9: Fat-soluble vitamins
+        const fatSoluble = SUPPLEMENTS_DATA.filter(s => s.withFat);
+        log(`Fat-soluble supplements: ${fatSoluble.map(s => s.name).join(', ')}`, 'info');
+        assert(fatSoluble.length > 0, 'Has fat-soluble supplements');
+
+        fatSoluble.forEach(s => {
+            assert(s.withFood.toLowerCase().includes('мазн'),
+                   `${s.name} requires fat in food description`);
+        });
+
+        // Test 10: Colors are valid hex
+        SUPPLEMENTS_DATA.forEach(s => {
+            const isValidHex = /^#[0-9A-F]{6}$/i.test(s.color);
+            assert(isValidHex, `${s.name} has valid hex color: ${s.color}`);
+        });
+
+        log('\n=== Test Suite Complete ===', 'info');
+
+        // Summary
+        const allTests = document.querySelectorAll('.test-section');
+        const passed = document.querySelectorAll('.test-pass').length;
+        const failed = document.querySelectorAll('.test-fail').length;
+
+        log(`\nTotal: ${allTests.length} | Passed: ${passed} | Failed: ${failed}`,
+            failed === 0 ? 'pass' : 'fail');
+    </script>
+</body>
+</html>

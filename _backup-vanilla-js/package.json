@@ -1,0 +1,43 @@
+{
+  "name": "testograph-tools",
+  "version": "1.0.0",
+  "description": "Science-based toolkit for optimizing testosterone naturally through nutrition, sleep, exercise, and supplementation",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8080 -o",
+    "dev": "npx live-server --port=8080 --open=/",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "testosterone",
+    "health",
+    "fitness",
+    "nutrition",
+    "supplements",
+    "sleep",
+    "exercise"
+  ],
+  "author": "Testograph Tools",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/testograph-tools"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/testograph-tools/issues"
+  },
+  "homepage": "https://github.com/yourusername/testograph-tools#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "notes": {
+    "cdn-dependencies": [
+      "@supabase/supabase-js@2 - https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2",
+      "jsPDF@2.5.1 - https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js",
+      "Chart.js@4 - https://cdn.jsdelivr.net/npm/chart.js"
+    ],
+    "description": "All external libraries are loaded via CDN in HTML files. No npm install required for dependencies."
+  }
+}

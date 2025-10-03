@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/simeonsirakov/projects-cursor/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

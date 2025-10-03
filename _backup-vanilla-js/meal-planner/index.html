@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>30-Дневен План за Хранене</title>
+  <link rel="stylesheet" href="../shared/css/global.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>30-Дневен План за Хранене</h1>
+      <p class="subtitle">Персонализиран план за оптимизация на тестостерона и постигане на вашите цели</p>
+    </header>
+
+    <!-- Input Form -->
+    <section class="input-section" id="inputSection">
+      <div class="form-card">
+        <h2>Въведете вашите данни</h2>
+        <form id="mealPlanForm">
+          <div class="form-group">
+            <label for="age">Възраст (години)</label>
+            <input type="number" id="age" name="age" required min="18" max="100" placeholder="напр. 30">
+          </div>
+
+          <div class="form-group">
+            <label for="weight">Тегло (кг)</label>
+            <input type="number" id="weight" name="weight" required min="40" max="200" step="0.1" placeholder="напр. 80">
+          </div>
+
+          <div class="form-group">
+            <label for="goal">Цел</label>
+            <select id="goal" name="goal" required>
+              <option value="">Изберете цел...</option>
+              <option value="bulk">Увеличаване на маса</option>
+              <option value="maintain">Поддържане</option>
+              <option value="cut">Отслабване</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="budget">Бюджет</label>
+            <select id="budget" name="budget" required>
+              <option value="">Изберете бюджет...</option>
+              <option value="budget">Бюджетен</option>
+              <option value="standard">Стандартен</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-large">
+            Генерирай План
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section hidden" id="resultsSection">
+      <div class="results-header">
+        <h2>Вашият 30-Дневен План</h2>
+        <div class="action-buttons">
+          <button id="saveToSupabaseBtn" class="btn btn-primary">
+            Запази в профил
+          </button>
+          <button id="newPlanBtn" class="btn btn-outline">
+            Нов план
+          </button>
+        </div>
+      </div>
+
+      <!-- Summary Stats -->
+      <div class="stats-grid" id="statsGrid">
+        <!-- Stats will be injected here -->
+      </div>
+
+      <!-- Meal Plan Calendar -->
+      <div class="calendar-section">
+        <h3>Дневен План (30 дни)</h3>
+        <div class="calendar-grid" id="calendarGrid">
+          <!-- Days will be injected here -->
+        </div>
+      </div>
+
+      <!-- Shopping Lists -->
+      <div class="shopping-section">
+        <h3>Списъци за Пазаруване</h3>
+        <div class="shopping-tabs">
+          <button class="tab-btn active" data-week="1">Седмица 1</button>
+          <button class="tab-btn" data-week="2">Седмица 2</button>
+          <button class="tab-btn" data-week="3">Седмица 3</button>
+          <button class="tab-btn" data-week="4">Седмица 4</button>
+        </div>
+        <div id="shoppingLists">
+          <!-- Shopping lists will be injected here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal for Day Details -->
+    <div id="dayModal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div id="dayModalContent">
+          <!-- Day details will be injected here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Save Prompt for Non-Logged Users -->
+    <div id="savePrompt" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="save-prompt-content">
+          <h3>Запазете вашия план</h3>
+          <p>За да запазите вашия 30-дневен план за хранене, трябва да имате профил.</p>
+          <p>Планът е запазен временно в браузъра ви, но може да бъде изтрит.</p>
+          <div class="prompt-actions">
+            <button class="btn btn-primary">Създай профил</button>
+            <button class="btn btn-outline close-modal">По-късно</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../shared/js/storage.js"></script>
+  <script src="../shared/js/supabase-client.js"></script>
+  <script src="../shared/js/analytics.js"></script>
+  <script src="meals-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

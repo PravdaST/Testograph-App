@@ -24,3 +24,94 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Modal Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Print Styles for Shopping List */
+@media print {
+  /* Hide everything except shopping list when printing */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Show only shopping list container and its children */
+  .print-shopping-list,
+  .print-shopping-list * {
+    visibility: visible;
+  }
+
+  /* Position shopping list at top of page */
+  .print-shopping-list {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  /* Remove backgrounds and borders for cleaner print */
+  .print-shopping-list {
+    background: white !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Ensure checkboxes are visible */
+  input[type="checkbox"] {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Hide interactive elements */
+  button {
+    display: none !important;
+  }
+
+  /* Tailwind's print:hidden utility will handle other elements */
+  [class*="print:hidden"] {
+    display: none !important;
+  }
+
+  /* Optimize spacing for print */
+  .print-shopping-list h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .print-shopping-list h3 {
+    font-size: 18px;
+    margin-top: 12px;
+    margin-bottom: 8px;
+  }
+
+  /* Add page breaks between categories if needed */
+  .print-category {
+    page-break-inside: avoid;
+  }
+}
