@@ -2,14 +2,14 @@ import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import DashboardClient from './DashboardClient'
 
-// Mini apps configuration with professional SVG icons
+// Mini apps configuration with real images
 const MINI_APPS = [
   {
     slug: 'meal-planner',
     name: 'Meal Planner',
     nameBg: 'Планиране на Храна',
     description: 'Персонализирани 30-дневни хранителни планове, оптимизирани за вашите цели',
-    icon: 'meal',
+    imageUrl: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&h=300&fit=crop',
     color: 'emerald',
   },
   {
@@ -17,7 +17,7 @@ const MINI_APPS = [
     name: 'Sleep Protocol',
     nameBg: 'Протокол за Сън',
     description: 'Научно базирани стратегии за оптимизация на съня и възстановяването',
-    icon: 'sleep',
+    imageUrl: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=400&h=300&fit=crop',
     color: 'blue',
   },
   {
@@ -25,7 +25,7 @@ const MINI_APPS = [
     name: 'Supplement Timing',
     nameBg: 'Timing на Добавки',
     description: 'Прецизен график за максимална ефективност на хранителните добавки',
-    icon: 'supplement',
+    imageUrl: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=300&fit=crop',
     color: 'purple',
   },
   {
@@ -33,7 +33,7 @@ const MINI_APPS = [
     name: 'Exercise Guide',
     nameBg: 'Тренировъчен План',
     description: 'Персонализирани тренировъчни програми за постигане на целите ви',
-    icon: 'exercise',
+    imageUrl: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&h=300&fit=crop',
     color: 'orange',
   },
   {
@@ -41,7 +41,7 @@ const MINI_APPS = [
     name: 'Lab Testing',
     nameBg: 'Лабораторни Анализи',
     description: 'Проследяване и анализ на ключови здравни биомаркери',
-    icon: 'lab',
+    imageUrl: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=400&h=300&fit=crop',
     color: 'cyan',
   },
 ]
