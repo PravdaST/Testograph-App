@@ -79,7 +79,7 @@ export async function sendWelcomeEmail({
     `}
 
     <div style="text-align: center; margin: 30px 0;">
-      <a href="${process.env.NEXT_PUBLIC_APP_URL}/login"
+      <a href="${process.env.NEXT_PUBLIC_APP_URL}/dashboard"
          style="display: inline-block; background: #667eea; color: white; padding: 15px 40px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px;">
         Влез в Акаунта
       </a>
@@ -111,7 +111,7 @@ ${password ? `Вашите данни за вход:
 
 ⚠️ Моля запазете тази информация на сигурно място.` : `ℹ️ Използвайте вашата съществуваща парола за да влезете в акаунта си.`}
 
-Влезте в акаунта си тук: ${process.env.NEXT_PUBLIC_APP_URL}/login
+Влезте в акаунта си тук: ${process.env.NEXT_PUBLIC_APP_URL}/dashboard
 
 Ако имате въпроси, свържете се с нас на support@testograph.eu
 `
