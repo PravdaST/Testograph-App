@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ message: 'Order not paid yet' }, { status: 200 })
     }
 
-    console.log(`Order ${order.id} is PAID`)
+    console.log(`✅ Order #${order.id} is PAID`)
 
     // Extract customer info
     const customerEmail = order.email || order.customer?.email
@@ -142,6 +142,25 @@ export async function POST(request: NextRequest) {
         console.error('Failed to send welcome email')
         // Don't fail the webhook, user is still created
       }
+    }
+
+    // Check if order already processed (idempotency)
+    const { data: existingPurchase } = await supabaseAdmin
+      .from('purchases')
+      .select('id')
+      .eq('shopify_order_id', order.id.toString())
+      .single()
+
+    if (existingPurchase) {
+      console.log(`✅ Order #${order.id} already processed, skipping`)
+      return NextResponse.json(
+        {
+          success: true,
+          message: 'Order already processed',
+          order_id: order.id,
+        },
+        { status: 200 }
+      )
     }
 
     // Insert purchase record
