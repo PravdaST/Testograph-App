@@ -96,13 +96,14 @@ export async function POST(request: NextRequest) {
     const userExists = existingUser?.users.find((u) => u.email === customerEmail)
 
     let userId: string
+    let generatedPassword: string | null = null
 
     if (userExists) {
       console.log('User already exists:', customerEmail)
       userId = userExists.id
     } else {
-      // Generate secure password
-      const generatedPassword = crypto.randomBytes(12).toString('base64')
+      // Generate secure password for new user
+      generatedPassword = crypto.randomBytes(12).toString('base64')
 
       // Create new user account
       const { data: newUser, error: createError } =
@@ -129,19 +130,6 @@ export async function POST(request: NextRequest) {
         full_name: customerName,
         updated_at: new Date().toISOString(),
       })
-
-      // Send welcome email with credentials
-      const emailSent = await sendWelcomeEmail({
-        email: customerEmail,
-        password: generatedPassword,
-        productName: productMapping.nameBg,
-        apps: productMapping.apps,
-      })
-
-      if (!emailSent) {
-        console.error('Failed to send welcome email')
-        // Don't fail the webhook, user is still created
-      }
     }
 
     // Check if order already processed (idempotency)
@@ -179,6 +167,27 @@ export async function POST(request: NextRequest) {
     if (purchaseError) {
       console.error('Failed to insert purchase:', purchaseError)
       return NextResponse.json({ error: 'Failed to record purchase' }, { status: 500 })
+    }
+
+    console.log(`✅ Purchase record created for ${customerEmail}`)
+
+    // Send email notification (always - for new users with credentials, or existing users with new apps)
+    const emailSent = await sendWelcomeEmail({
+      email: customerEmail,
+      password: generatedPassword, // null for existing users, string for new users
+      productName: productMapping.nameBg,
+      apps: productMapping.apps,
+    })
+
+    if (!emailSent) {
+      console.error('Failed to send email')
+      // Don't fail the webhook, purchase is still recorded
+    } else {
+      if (generatedPassword) {
+        console.log(`✅ Welcome email with credentials sent to ${customerEmail}`)
+      } else {
+        console.log(`✅ New apps notification sent to ${customerEmail}`)
+      }
     }
 
     console.log('Successfully processed order:', order.id)
