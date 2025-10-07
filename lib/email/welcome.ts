@@ -118,7 +118,7 @@ ${appsList}
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Testograph <noreply@testograph.eu>',
+        from: 'Testograph <noreply@shop.testograph.eu>',
         to: email,
         subject: 'Добре дошли в Testograph - Данни за Вход',
         html: htmlContent,

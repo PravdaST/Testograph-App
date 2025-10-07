@@ -36,6 +36,14 @@ export async function POST(request: NextRequest) {
     const order = JSON.parse(rawBody)
     console.log('Processing Shopify order:', order.id)
 
+    // Check if order is paid
+    if (order.financial_status !== 'paid') {
+      console.warn(`Order ${order.id} not paid yet (status: ${order.financial_status})`)
+      return NextResponse.json({ message: 'Order not paid yet' }, { status: 200 })
+    }
+
+    console.log(`Order ${order.id} is PAID`)
+
     // Extract customer info
     const customerEmail = order.email || order.customer?.email
     const customerName = order.customer?.first_name

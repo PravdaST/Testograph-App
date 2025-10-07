@@ -10,26 +10,72 @@ export interface ProductMapping {
 }
 
 export const PRODUCT_MAPPINGS: Record<string, ProductMapping> = {
-  'starter-bundle': {
+  // Individual Products
+  'testograph-pro': {
     price: 97,
+    apps: ['testograph-pro'],
+    nameBg: 'Testograph PRO',
+  },
+  'testograph_pro': {
+    price: 97,
+    apps: ['testograph-pro'],
+    nameBg: 'Testograph PRO',
+  },
+  'meal-planner': {
+    price: 67,
     apps: ['meal-planner'],
-    nameBg: 'Starter Bundle',
+    nameBg: 'Meal Planner',
   },
-  'complete-bundle': {
-    price: 197,
-    apps: ['meal-planner', 'sleep-protocol', 'supplement-timing'],
-    nameBg: 'Complete Bundle',
+  'sleep-protocol': {
+    price: 67,
+    apps: ['sleep-protocol'],
+    nameBg: 'Sleep Protocol',
   },
+  'supplement-timing': {
+    price: 67,
+    apps: ['supplement-timing'],
+    nameBg: 'Supplement Timing',
+  },
+  'exercise-guide': {
+    price: 67,
+    apps: ['exercise-guide'],
+    nameBg: 'Exercise Guide',
+  },
+  'lab-testing': {
+    price: 67,
+    apps: ['lab-testing'],
+    nameBg: 'Lab Testing',
+  },
+
+  // Bundles
   'maximum-bundle': {
-    price: 267,
+    price: 297,
     apps: [
       'meal-planner',
       'sleep-protocol',
       'supplement-timing',
       'exercise-guide',
       'lab-testing',
+      'testograph-pro',
     ],
     nameBg: 'Maximum Bundle',
+  },
+  'testograph-pro-bundle': {
+    price: 267,
+    apps: [
+      'testograph-pro',
+      'meal-planner',
+      'sleep-protocol',
+      'lab-testing',
+      'exercise-guide',
+      'supplement-timing',
+    ],
+    nameBg: 'Testograph PRO Bundle',
+  },
+  'bundle': {
+    price: 97,
+    apps: ['testograph-pro'],
+    nameBg: 'Bundle',
   },
 }
 
