@@ -58,13 +58,12 @@ export default async function DashboardPage() {
     redirect('/login')
   }
 
-  // Get user's purchases to determine which apps they have access to
+  // Get ALL user's purchases to determine which apps they have access to
   const { data: purchases } = await supabase
     .from('purchases')
     .select('apps_included')
     .eq('user_id', user.id)
     .eq('status', 'completed')
-    .single()
 
   // Get user profile
   const { data: profile } = await supabase
@@ -73,8 +72,9 @@ export default async function DashboardPage() {
     .eq('id', user.id)
     .single()
 
-  // Determine which apps the user has access to
-  const userApps = purchases?.apps_included || []
+  // Combine all apps from all purchases into a single unique array
+  const allApps = purchases?.flatMap((p) => p.apps_included) || []
+  const userApps = [...new Set(allApps)] // Remove duplicates
 
   // Create apps data with access status
   const appsWithAccess = MINI_APPS.map((app) => ({
