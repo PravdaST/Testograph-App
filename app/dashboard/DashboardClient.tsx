@@ -4,7 +4,7 @@ import React from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { LogOut, Menu, X } from 'lucide-react'
+import { LogOut, Menu, X, Settings } from 'lucide-react'
 
 interface User {
   email: string
@@ -67,12 +67,19 @@ export default function DashboardClient({ user, apps }: DashboardClientProps) {
               </p>
             </div>
 
-            {/* Desktop: User Info + Logout */}
+            {/* Desktop: User Info + Settings + Logout */}
             <div className="hidden md:flex items-center gap-4">
               <div className="text-right">
                 <p className="text-sm font-medium text-gray-900">{user.fullName}</p>
                 <p className="text-xs text-gray-500">{user.email}</p>
               </div>
+              <button
+                onClick={() => router.push('/dashboard/settings')}
+                className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-all flex items-center gap-2"
+              >
+                <Settings className="w-4 h-4" />
+                Настройки
+              </button>
               <button
                 onClick={handleLogout}
                 disabled={isLoggingOut}
@@ -98,14 +105,26 @@ export default function DashboardClient({ user, apps }: DashboardClientProps) {
                     <p className="text-sm font-medium text-gray-900">{user.fullName}</p>
                     <p className="text-xs text-gray-500 mt-0.5">{user.email}</p>
                   </div>
-                  <button
-                    onClick={handleLogout}
-                    disabled={isLoggingOut}
-                    className="w-full flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all disabled:opacity-50"
-                  >
-                    <LogOut className="w-4 h-4" />
-                    {isLoggingOut ? 'Излизане...' : 'Изход'}
-                  </button>
+                  <div className="space-y-2">
+                    <button
+                      onClick={() => {
+                        setShowUserMenu(false)
+                        router.push('/dashboard/settings')
+                      }}
+                      className="w-full flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all"
+                    >
+                      <Settings className="w-4 h-4" />
+                      Настройки
+                    </button>
+                    <button
+                      onClick={handleLogout}
+                      disabled={isLoggingOut}
+                      className="w-full flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all disabled:opacity-50"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      {isLoggingOut ? 'Излизане...' : 'Изход'}
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
