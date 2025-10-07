@@ -177,3 +177,16 @@ export async function POST(request: NextRequest) {
     )
   }
 }
+
+/**
+ * GET handler for testing webhook endpoint
+ */
+export async function GET() {
+  return NextResponse.json({
+    message: 'Shopify webhook endpoint is live',
+    endpoint: '/api/webhooks/shopify',
+    method: 'POST',
+    event: 'orders/paid',
+    status: 'ready',
+  })
+}
