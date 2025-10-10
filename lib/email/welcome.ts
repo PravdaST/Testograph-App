@@ -46,7 +46,7 @@ export async function sendWelcomeEmail({
 </head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
   <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
-    <h1 style="color: white; margin: 0;">${password ? 'Добре дошли в Testograph! 🎉' : 'Нови приложения добавени! 🚀'}</h1>
+    <h1 style="color: white; margin: 0; font-size: 24px; font-weight: 600;">Welcome to Testograph APP</h1>
   </div>
 
   <div style="background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px;">
@@ -98,7 +98,7 @@ export async function sendWelcomeEmail({
 `
 
   const textContent = `
-${password ? 'Добре дошли в Testograph!' : 'Нови приложения добавени!'}
+Welcome to Testograph APP
 
 Благодарим ви за покупката на ${productName}!
 
@@ -126,11 +126,14 @@ ${password ? `Вашите данни за вход:
       body: JSON.stringify({
         from: 'Testograph <noreply@shop.testograph.eu>',
         to: email,
-        subject: password
-          ? 'Добре дошли в Testograph - Данни за Вход'
-          : '🚀 Нови приложения добавени към вашия акаунт',
+        subject: 'Welcome to Testograph APP',
+        reply_to: 'support@testograph.eu',
         html: htmlContent,
         text: textContent,
+        headers: {
+          'List-Unsubscribe': '<mailto:support@testograph.eu?subject=Unsubscribe>',
+          'X-Entity-Ref-ID': `purchase-${Date.now()}`,
+        },
       }),
     })
 
