@@ -1,6 +1,7 @@
 /**
  * Supplements Database
- * 10 scientifically-backed supplements for testosterone optimization
+ * 15 scientifically-backed supplements for testosterone optimization
+ * TestoUP is our flagship product - featured prominently
  */
 
 export interface Supplement {
@@ -10,9 +11,12 @@ export interface Supplement {
   timing: 'morning' | 'evening' | 'pre-workout' | 'post-workout'
   withFood: string
   withFat: boolean
-  category: 'testosterone' | 'sleep' | 'workout'
+  category: 'testosterone' | 'sleep' | 'workout' | 'general'
   why: string
   color: string
+  isTestoUp?: boolean // Flag for our product
+  shopUrl?: string // Link to shop
+  benefits?: string[] // Key benefits
 }
 
 export interface SupplementInteraction {
@@ -22,6 +26,7 @@ export interface SupplementInteraction {
 }
 
 export const SUPPLEMENTS: Supplement[] = [
+  // ===== TestoUP - OUR FLAGSHIP PRODUCT (Always first) =====
   {
     id: 1,
     name: 'TestoUP',
@@ -30,8 +35,17 @@ export const SUPPLEMENTS: Supplement[] = [
     withFood: 'С храна',
     withFat: false,
     category: 'testosterone',
-    why: 'Пиковото производство на тестостерон е сутрин. Оптималната абсорбция е при прием веднага след събуждане.',
-    color: '#FF6B35'
+    why: 'Научно разработена формула за естествено повишаване на тестостерона. Съдържа 8 активни съставки (D-Aspartic Acid, Tribulus, Fenugreek, Zinc, Magnesium, Vitamin D3, Boron, Black Pepper Extract).',
+    color: '#FF6B35',
+    isTestoUp: true,
+    shopUrl: 'https://shop.testograph.eu/products/testoup',
+    benefits: [
+      'Повишава тестостерона естествено',
+      'Подобрява либидото и енергията',
+      'Увеличава мускулната маса',
+      'Намалява стреса и кортизола',
+      'Подобрява качеството на съня'
+    ]
   },
   {
     id: 2,
@@ -131,6 +145,62 @@ export const SUPPLEMENTS: Supplement[] = [
     category: 'testosterone',
     why: 'Увеличава свободния тестостерон чрез намаляване на SHBG. Оптимален за сутрешен прием.',
     color: '#FECA57'
+  },
+  // ===== Additional Popular Supplements =====
+  {
+    id: 11,
+    name: 'Tongkat Ali',
+    dosage: '200-400 mg',
+    timing: 'morning',
+    withFood: 'С храна',
+    withFat: false,
+    category: 'testosterone',
+    why: 'Мощен адаптоген, който повишава свободния тестостерон и намалява кортизола. Подобрява либидото и спортната производителност.',
+    color: '#E74C3C'
+  },
+  {
+    id: 12,
+    name: 'Fadogia Agrestis',
+    dosage: '600 mg',
+    timing: 'morning',
+    withFood: 'С храна',
+    withFat: false,
+    category: 'testosterone',
+    why: 'Повишава LH (лутеинизиращ хормон), което стимулира продукцията на тестостерон. Комбинира се добре с Tongkat Ali.',
+    color: '#C0392B'
+  },
+  {
+    id: 13,
+    name: 'Maca Root',
+    dosage: '1.5-3 г',
+    timing: 'morning',
+    withFood: 'С храна',
+    withFat: false,
+    category: 'testosterone',
+    why: 'Перуански суперфуд, който подобрява енергията, либидото и настроението. Балансира хормоните.',
+    color: '#F39C12'
+  },
+  {
+    id: 14,
+    name: 'Glycine',
+    dosage: '3 г',
+    timing: 'evening',
+    withFood: 'С или без храна',
+    withFat: false,
+    category: 'sleep',
+    why: 'Аминокиселина, която подобрява качеството на съня и намалява температурата на тялото. Синергия с магнезий.',
+    color: '#9B59B6'
+  },
+  {
+    id: 15,
+    name: 'L-Theanine',
+    dosage: '200 mg',
+    timing: 'evening',
+    withFood: 'С или без храна',
+    withFat: false,
+    category: 'sleep',
+    why: 'Стимулира GABA продукцията за релаксация и качествен сън. Намалява стреса без седативен ефект.',
+    color: '#3498DB'
   }
 ]
 
