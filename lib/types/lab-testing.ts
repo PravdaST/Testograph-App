@@ -10,6 +10,10 @@ export interface LabResult {
   shbg?: number // nmol/L
   estradiol?: number // pg/mL
   lh?: number // mIU/mL
+  prolactin?: number // ng/mL
+  fsh?: number // mIU/mL
+  dht?: number // pg/mL
+  cortisol?: number // µg/dL
   notes?: string
 }
 
@@ -19,6 +23,11 @@ export interface InterpretationInput {
   free_t?: number
   shbg?: number
   estradiol?: number
+  lh?: number
+  prolactin?: number
+  fsh?: number
+  dht?: number
+  cortisol?: number
 }
 
 export interface InterpretationResult {
@@ -28,6 +37,11 @@ export interface InterpretationResult {
   freeTStatus?: string
   shbgStatus?: string
   estradiolStatus?: string
+  lhStatus?: string
+  prolactinStatus?: string
+  fshStatus?: string
+  dhtStatus?: string
+  cortisolStatus?: string
   ageRange: string
   optimalRange: [number, number]
   recommendations: string[]

@@ -117,6 +117,66 @@ export function interpretResults(input: InterpretationInput): InterpretationResu
     }
   }
 
+  // LH interpretation (optional)
+  let lhStatus: string | undefined
+  if (input.lh !== undefined) {
+    if (input.lh < 1.5) {
+      lhStatus = `${input.lh} mIU/mL - НИСЪК (може да има проблем с хипофизата)`
+    } else if (input.lh <= 9.3) {
+      lhStatus = `${input.lh} mIU/mL - Нормален`
+    } else {
+      lhStatus = `${input.lh} mIU/mL - ВИСОК (възможна първична хипогонадизъм)`
+    }
+  }
+
+  // Prolactin interpretation (optional)
+  let prolactinStatus: string | undefined
+  if (input.prolactin !== undefined) {
+    if (input.prolactin < 2) {
+      prolactinStatus = `${input.prolactin} ng/mL - НИСЪК`
+    } else if (input.prolactin <= 18) {
+      prolactinStatus = `${input.prolactin} ng/mL - Нормален`
+    } else {
+      prolactinStatus = `${input.prolactin} ng/mL - ВИСОК (инхибира тестостерон)`
+    }
+  }
+
+  // FSH interpretation (optional)
+  let fshStatus: string | undefined
+  if (input.fsh !== undefined) {
+    if (input.fsh < 1.5) {
+      fshStatus = `${input.fsh} mIU/mL - НИСЪК`
+    } else if (input.fsh <= 12.4) {
+      fshStatus = `${input.fsh} mIU/mL - Нормален`
+    } else {
+      fshStatus = `${input.fsh} mIU/mL - ВИСОК (възможна първична хипогонадизъм)`
+    }
+  }
+
+  // DHT interpretation (optional)
+  let dhtStatus: string | undefined
+  if (input.dht !== undefined) {
+    if (input.dht < 30) {
+      dhtStatus = `${input.dht} pg/mL - НИСЪК`
+    } else if (input.dht <= 85) {
+      dhtStatus = `${input.dht} pg/mL - Оптимален`
+    } else {
+      dhtStatus = `${input.dht} pg/mL - ВИСОК`
+    }
+  }
+
+  // Cortisol interpretation (optional)
+  let cortisolStatus: string | undefined
+  if (input.cortisol !== undefined) {
+    if (input.cortisol < 6) {
+      cortisolStatus = `${input.cortisol} µg/dL - НИСЪК (надбъбречна недостатъчност)`
+    } else if (input.cortisol <= 18) {
+      cortisolStatus = `${input.cortisol} µg/dL - Нормален`
+    } else {
+      cortisolStatus = `${input.cortisol} µg/dL - ВИСОК (хроничен стрес)`
+    }
+  }
+
   // Generate recommendations
   const recommendations = generateRecommendations(status, input)
 
@@ -127,6 +187,11 @@ export function interpretResults(input: InterpretationInput): InterpretationResu
     freeTStatus,
     shbgStatus,
     estradiolStatus,
+    lhStatus,
+    prolactinStatus,
+    fshStatus,
+    dhtStatus,
+    cortisolStatus,
     ageRange,
     optimalRange: range.optimal,
     recommendations
@@ -165,6 +230,21 @@ function generateRecommendations(
   // Estradiol specific
   if (input.estradiol !== undefined && input.estradiol > 40) {
     recs.push('⚠️ Високият естрадиол може да се контролира с добавки: DIM, цинк, витамин E')
+  }
+
+  // Prolactin specific
+  if (input.prolactin !== undefined && input.prolactin > 18) {
+    recs.push('⚠️ Високият пролактин инхибира тестостерон. Помага: витамин B6, витекс, намаляване на стреса')
+  }
+
+  // Cortisol specific
+  if (input.cortisol !== undefined && input.cortisol > 18) {
+    recs.push('⚠️ Високият кортизол (стрес) намалява тестостерон. Фокус: медитация, адаптогени (ашваганда), сън')
+  }
+
+  // LH/FSH specific
+  if (input.lh !== undefined && input.lh > 9.3) {
+    recs.push('⚠️ Високите LH/FSH могат да означават първична хипогонадизъм. Консултирай ендокринолог')
   }
 
   return recs
@@ -221,7 +301,19 @@ export function formatDate(dateString: string): string {
  * Export results to CSV
  */
 export function exportToCSV(results: LabResult[]): string {
-  const headers = ['Дата', 'Total T (ng/dL)', 'Free T (pg/mL)', 'SHBG (nmol/L)', 'Estradiol (pg/mL)', 'LH (mIU/mL)', 'Бележки']
+  const headers = [
+    'Дата',
+    'Total T (ng/dL)',
+    'Free T (pg/mL)',
+    'SHBG (nmol/L)',
+    'Estradiol (pg/mL)',
+    'LH (mIU/mL)',
+    'Prolactin (ng/mL)',
+    'FSH (mIU/mL)',
+    'DHT (pg/mL)',
+    'Cortisol (µg/dL)',
+    'Бележки'
+  ]
 
   const rows = results.map(r => [
     r.test_date,
@@ -230,6 +322,10 @@ export function exportToCSV(results: LabResult[]): string {
     r.shbg || '',
     r.estradiol || '',
     r.lh || '',
+    r.prolactin || '',
+    r.fsh || '',
+    r.dht || '',
+    r.cortisol || '',
     r.notes || ''
   ])
 
