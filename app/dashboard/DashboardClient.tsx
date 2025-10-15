@@ -19,6 +19,7 @@ interface App {
   description: string
   imageUrl: string
   color: string
+  shopUrl: string
   hasAccess: boolean
 }
 
@@ -44,7 +45,7 @@ export default function DashboardClient({ user, apps }: DashboardClientProps) {
     if (app.hasAccess) {
       router.push(`/dashboard/${app.slug}`)
     } else {
-      window.open('https://shop.testograph.eu', '_blank')
+      window.open(app.shopUrl, '_blank')
     }
   }
 
@@ -143,7 +144,7 @@ export default function DashboardClient({ user, apps }: DashboardClientProps) {
               className={`group relative bg-white rounded-xl border-2 overflow-hidden transition-all duration-200 ${
                 app.hasAccess
                   ? 'border-gray-200 hover:border-gray-300 hover:shadow-lg cursor-pointer'
-                  : 'border-gray-200 cursor-not-allowed opacity-60'
+                  : 'border-gray-200 hover:border-gray-300 cursor-pointer opacity-60'
               }`}
             >
               {/* Status Badge - Absolute positioned */}
@@ -200,7 +201,7 @@ export default function DashboardClient({ user, apps }: DashboardClientProps) {
                   </div>
                 ) : (
                   <div className="flex items-center text-sm font-medium text-gray-500">
-                    Отключи в магазина
+                    Виж цена
                     <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>

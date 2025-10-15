@@ -11,6 +11,7 @@ const MINI_APPS = [
     description: 'Персонализирани 30-дневни хранителни планове, оптимизирани за вашите цели',
     imageUrl: '/apps/meal-planner.png',
     color: 'emerald',
+    shopUrl: 'https://shop.testograph.eu/products/meal-planner',
   },
   {
     slug: 'sleep-protocol',
@@ -19,6 +20,7 @@ const MINI_APPS = [
     description: 'Научно базирани стратегии за оптимизация на съня и възстановяването',
     imageUrl: '/apps/sleep-protocol.png',
     color: 'blue',
+    shopUrl: 'https://shop.testograph.eu/products/sleep-protocol',
   },
   {
     slug: 'supplement-timing',
@@ -27,6 +29,7 @@ const MINI_APPS = [
     description: 'Прецизен график за максимална ефективност на хранителните добавки',
     imageUrl: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=300&fit=crop',
     color: 'purple',
+    shopUrl: 'https://shop.testograph.eu/products/timing-guide',
   },
   {
     slug: 'exercise-guide',
@@ -35,6 +38,7 @@ const MINI_APPS = [
     description: 'Персонализирани тренировъчни програми за постигане на целите ви',
     imageUrl: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&h=300&fit=crop',
     color: 'orange',
+    shopUrl: 'https://shop.testograph.eu/products/exercise-reference-guide',
   },
   {
     slug: 'lab-testing',
@@ -43,6 +47,7 @@ const MINI_APPS = [
     description: 'Проследяване и анализ на ключови здравни биомаркери',
     imageUrl: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=400&h=300&fit=crop',
     color: 'cyan',
+    shopUrl: 'https://shop.testograph.eu/products/lab-testing-guide',
   },
 ]
 
