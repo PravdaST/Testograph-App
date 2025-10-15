@@ -298,10 +298,12 @@ export default function SleepProtocolClient({ initialData, userId }: SleepProtoc
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Tabs - Horizontal Scroll */}
-        <div className="overflow-x-auto hide-scrollbar border-t border-gray-200">
-          <div className="flex min-w-max px-4 sm:px-6 lg:px-8">
+      {/* Tabs - Compact */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+        <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
+          <div className="grid grid-cols-4 border-b border-gray-200">
             {tabs.map((tab) => {
               const Icon = tab.icon
               const isActive = activeTab === tab.id
@@ -310,14 +312,15 @@ export default function SleepProtocolClient({ initialData, userId }: SleepProtoc
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as Tab)}
-                  className={`flex items-center gap-2 px-4 py-3 border-b-2 transition-colors whitespace-nowrap ${
+                  className={`flex items-center justify-center gap-1.5 px-2 sm:px-4 py-2.5 sm:py-3 font-medium text-xs sm:text-sm whitespace-nowrap border-b-2 transition-all min-h-[44px] ${
                     isActive
-                      ? 'border-indigo-600 text-indigo-600'
-                      : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
+                      ? 'border-indigo-600 text-indigo-600 bg-indigo-50'
+                      : 'border-transparent text-gray-600 hover:text-indigo-600 hover:bg-gray-50'
                   }`}
                 >
                   <Icon className="w-4 h-4" strokeWidth={2} />
-                  <span className="text-sm font-medium">{tab.label}</span>
+                  <span className="hidden sm:inline">{tab.label}</span>
+                  <span className="sm:hidden">{tab.label.substring(0, 4)}.</span>
                   {tab.id === 'checklist' && completedItems > 0 && (
                     <span className="ml-1 px-1.5 py-0.5 bg-green-100 text-green-700 text-xs rounded-full font-medium">
                       {completedItems}/10
