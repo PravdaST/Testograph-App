@@ -126,19 +126,20 @@ export default function LoginPage() {
     return (
       <div className="min-h-screen flex overflow-hidden">
         {/* Left Side - Hero Section (same as login) */}
-        <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 relative overflow-hidden animate-gradient">
-          {/* Animated Mesh Background */}
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-3xl animate-float animate-mesh"></div>
-            <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full blur-3xl animate-float-delayed"></div>
-            <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
-          </div>
+        <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500">
+          {/* Video Background */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="https://cdn.shopify.com/videos/c/o/v/7ddbadd71e484454aa68295e1ce22fd9.mp4" type="video/mp4" />
+          </video>
 
-          {/* Grid Pattern Overlay */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{
-            backgroundImage: 'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)',
-            backgroundSize: '50px 50px'
-          }}></div>
+          {/* Dark Overlay for text readability */}
+          <div className="absolute inset-0 bg-black/50"></div>
 
           <div className="relative z-10 flex flex-col justify-center px-12 xl:px-16 text-white animate-slideInLeft">
             <div className="mb-8">
@@ -255,19 +256,20 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex overflow-hidden">
       {/* Left Side - Hero Section */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 relative overflow-hidden animate-gradient">
-        {/* Animated Mesh Background */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-3xl animate-float animate-mesh"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full blur-3xl animate-float-delayed"></div>
-          <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
-        </div>
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500">
+        {/* Video Background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="https://cdn.shopify.com/videos/c/o/v/7ddbadd71e484454aa68295e1ce22fd9.mp4" type="video/mp4" />
+        </video>
 
-        {/* Grid Pattern Overlay */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: 'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)',
-          backgroundSize: '50px 50px'
-        }}></div>
+        {/* Dark Overlay for text readability */}
+        <div className="absolute inset-0 bg-black/50"></div>
 
         {/* Content */}
         <div className="relative z-10 flex flex-col justify-center px-12 xl:px-16 text-white animate-slideInLeft">
