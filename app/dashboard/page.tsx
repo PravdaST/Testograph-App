@@ -9,7 +9,7 @@ const MINI_APPS = [
     name: 'Meal Planner',
     nameBg: 'Планиране на Храна',
     description: 'Персонализирани 30-дневни хранителни планове, оптимизирани за вашите цели',
-    imageUrl: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&h=300&fit=crop',
+    imageUrl: '/apps/meal-planner.png',
     color: 'emerald',
   },
   {
@@ -17,7 +17,7 @@ const MINI_APPS = [
     name: 'Sleep Protocol',
     nameBg: 'Протокол за Сън',
     description: 'Научно базирани стратегии за оптимизация на съня и възстановяването',
-    imageUrl: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=400&h=300&fit=crop',
+    imageUrl: '/apps/sleep-protocol.png',
     color: 'blue',
   },
   {
